@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Ink — the dark console palette (sidebar) */
+  --color-ink-950: #070d1a;
+  --color-ink-900: #0c1424;
+  --color-ink-800: #131e33;
+  --color-ink-700: #1d2a44;
+  --color-ink-400: #5a6b8c;
+  --color-ink-300: #8295b5;
+
+  /* Paper — the light work surface */
+  --color-paper: #f4f3ee;
+  --color-paper-deep: #eceae2;
+
+  /* Signal accents */
+  --color-signal-500: #f59e0b;
+  --color-signal-600: #d97706;
+  --color-teal-flux: #14b8a6;
+}
+
+html {
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+}
+
+::selection {
+  background: var(--color-signal-500);
+  color: var(--color-ink-950);
+}
+
+/* Subtle grain over the work surface for depth */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.12s; }
+.rise-3 { animation-delay: 0.19s; }
+.rise-4 { animation-delay: 0.26s; }
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(245 158 11 / 0.45); }
+  70% { box-shadow: 0 0 0 12px rgb(245 158 11 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(245 158 11 / 0); }
+}
+.pulse-ring { animation: pulse-ring 2.2s ease-out infinite; }
+
+/* Thin console-style scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c9c5b8 transparent;
+}
