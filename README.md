@@ -1,5 +1,7 @@
 # CSV Data Analyzer
 
+**Live demo:** [csv-analyzer-ten.vercel.app](https://csv-analyzer-ten.vercel.app) — click "Load sample dataset" to try it without a file.
+
 A client-side CSV analysis dashboard. Drop in any CSV file and instantly get column statistics, auto-generated charts, and a color-coded data quality report — all processed locally in the browser. No backend, no data ever leaves your machine.
 
 ## Features
